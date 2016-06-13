@@ -51,6 +51,7 @@ public class BasicView extends View {
         pane.setOnTouchPressed(event -> {
             TouchPoint p = event.getTouchPoint();
             TouchNode n = new TouchNode(p.getId(), p.getSceneX() * HIDPI - pane.getLayoutX(), p.getSceneY() * HIDPI - pane.getLayoutY());
+            //didn't work with our Gluon version: returned wrong position (without using DPI factor)
             //TouchNode n = new TouchNode(p.getId(), p.getX(), p.getY());
 
             touches.put(p.getId(), n);
@@ -63,8 +64,10 @@ public class BasicView extends View {
             TouchPoint p = event.getTouchPoint();
             TouchNode n = touches.get(p.getId());
             n.setLayoutX(p.getSceneX() * HIDPI - this.getLayoutX());
+            //didn't work with our Gluon version: returned wrong position (without using DPI factor)
             //n.setLayoutX(p.getX());
             n.setLayoutY(p.getSceneY() * HIDPI - this.getLayoutY());
+            //didn't work with our Gluon version: returned wrong position (without using DPI factor)
             //n.setLayoutY(p.getY());
             n.getCircle().setStroke(Color.VIOLET);
 
